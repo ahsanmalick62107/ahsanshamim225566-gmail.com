@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js">
+</script>
+<body>
+<div ng-app="myApp" ng-controller="customerCtrl">
+<table>
+<tr ng-repeat="z in names">
+<td>{{ z.Name }}</td>
+<td>{{ z.City }}</td>
+</tr>
+</table>
+</div>
+<script>
+var app = angular.module('myApp',[]);
+app.controller('customerCtrl',function($scope,$http){
+	$http.get("https://www.w3schools.com/angular/customers.php")
+	.then(function (response){$scope.names = response.data.records;});
+});
+</script>
+</body>
+
+</html>
